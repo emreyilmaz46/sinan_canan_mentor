@@ -1,0 +1,10 @@
+/* main.css - Import all CSS modules */
+
+@import 'variables.css';
+@import 'base.css';
+@import 'login.css';
+@import 'sidebar.css';
+@import 'controls.css'; 
+@import 'conversation.css';
+@import 'animations.css';
+@import 'assessment.css'; 

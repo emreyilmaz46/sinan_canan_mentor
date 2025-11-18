@@ -1,0 +1,14 @@
+# List users
+python -m backend.manage_users list
+
+# Add new user
+python -m backend.manage_users add john_doe password123 "John Doe" "Acme Corp"
+
+# Change password
+python -m backend.manage_users password john_doe newpassword456
+
+
+
+#Example
+python -m backend.manage_users add enocta_admin enocta123 "Enocta YZ" "Enocta"
+python -m backend.manage_users add enocta enocta_satis "Sistem Yöneticisi" "Enocta Satış ve İş Geliştirme"

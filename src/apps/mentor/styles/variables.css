@@ -1,0 +1,29 @@
+/* variables.css - Design tokens and CSS variables for Mentor app */
+
+:root {
+  /* Color Scheme */
+  --mentor-primary: #5b0a0a;           /* Sinan Canan brand color */
+  --mentor-primary-light: #7a1010;     /* Lighter primary for hover states */
+  --mentor-primary-dark: #3d0707;      /* Darker primary for active states */
+  
+  --mentor-secondary: #ffffff;          /* Clean white */
+  --mentor-tertiary: #1e3a8a;          /* Navy blue for accents */
+  --mentor-tertiary-light: #3b82f6;    /* Lighter navy for hover */
+  
+  /* Status Colors */
+  --mentor-success: #10b981;           /* Connected state */
+  --mentor-warning: #f59e0b;           /* Connecting state */
+  --mentor-error: #ef4444;             /* Disconnected/error state */
+  
+  /* Neutral Colors */
+  --mentor-gray-50: #f9fafb;
+  --mentor-gray-100: #f3f4f6;
+  --mentor-gray-200: #e5e7eb;
+  --mentor-gray-300: #d1d5db;
+  --mentor-gray-400: #9ca3af;
+  --mentor-gray-500: #6b7280;
+  --mentor-gray-600: #4b5563;
+  --mentor-gray-700: #374151;
+  --mentor-gray-800: #1f2937;
+  --mentor-gray-900: #111827;
+}

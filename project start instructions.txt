@@ -1,0 +1,22 @@
+For Node.js: npm run start
+For Python: npm run start:python
+
+
+
+npm run dev:python
+
+
+
+
+---------------------------------------
+
+Render.Com Deployment commands
+
+Build Command
+
+pip install -r requirements.txt && npm install && npm run build:clean
+
+
+Start Command
+
+uvicorn backend.server:app --host 0.0.0.0 --port $PORT

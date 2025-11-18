@@ -1,0 +1,151 @@
+/* sidebar.css - Sidebar and persona list styling */
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+}
+
+.logo-container {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background-color: #ffffff;
+    padding: 1.2rem;
+    border-radius: var(--border-radius);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.company-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.logo-container h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0;
+    color: #333333;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.logo-container span {
+    color: var(--selected-persona);
+    font-weight: 300;
+}
+
+.persona-selection h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.persona-list {
+    list-style: none;
+}
+
+.persona {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+.persona-loading {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.persona-loading i {
+    margin-right: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.persona:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.persona.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-left: 3px solid var(--selected-persona);
+}
+
+.persona-avatar {
+    width: 50px;
+    height: 50px;
+    min-width: 50px; /* Prevent avatar from shrinking */
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 0.8rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.persona-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.persona-avatar.large {
+    width: 140px;
+    height: 140px;
+    border-width: 3px;
+    border-color: var(--primary-light);
+}
+
+.persona-info {
+    flex: 1;
+}
+
+.persona-info h4 {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+}
+
+.persona-info p {
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.session-info {
+    margin-top: auto;
+    padding-top: 1rem;
+    font-size: 0.85rem;
+    opacity: 0.8;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1200px) {
+    .logo-container h2 {
+        font-size: 1.4rem;
+    }
+    
+    .company-logo {
+        height: 35px;
+    }
+    
+    .logo-container {
+        gap: 0.6rem;
+        padding: 1rem;
+    }
+} 

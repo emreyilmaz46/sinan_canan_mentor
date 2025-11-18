@@ -1,0 +1,516 @@
+:root {
+    --primary-color: #c91f46;
+    --primary-light: #e42752;
+    --primary-dark: #a6193a;
+    --secondary-color: #4caf50;
+    --secondary-dark: #388e3c;
+    --danger-color: #f44336;
+    --danger-dark: #d32f2f;
+    --selected-persona: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #6c757d;
+    --text-light: #ffffff;
+    --gray-light: #f8f9fa;
+    --gray-medium: #e9ecef;
+    --gray-dark: #dee2e6;
+    --status-speaking: #33b5e5;
+    --status-connected: #00C851;
+    --status-disconnected: #ff4444;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 20px rgba(0,0,0,0.1);
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    
+    /* Animation speed control - smaller values = faster animations */
+    --animation-speed-factor: 0.7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-primary);
+    background-color: var(--gray-light);
+    line-height: 1.6;
+}
+
+/* Main Layout */
+.app-container {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+}
+
+.logo-container {
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1.5rem;
+}
+
+.logo-container h2 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.logo-container span {
+    color: var(--selected-persona);
+    font-weight: 300;
+}
+
+.persona-selection h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.persona-list {
+    list-style: none;
+}
+
+.persona {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+.persona-loading {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.persona-loading i {
+    margin-right: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.persona:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.persona.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-left: 3px solid var(--selected-persona);
+}
+
+.persona-avatar {
+    width: 50px;
+    height: 50px;
+    min-width: 50px; /* Prevent avatar from shrinking */
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 0.8rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.persona-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.persona-avatar.large {
+    width: 140px;
+    height: 140px;
+    border-width: 3px;
+    border-color: var(--primary-light);
+}
+
+.persona-info {
+    flex: 1;
+}
+
+.persona-info h4 {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+}
+
+.persona-info p {
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.session-info {
+    margin-top: auto;
+    padding-top: 1rem;
+    font-size: 0.85rem;
+    opacity: 0.8;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Main Content Styles */
+.main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.app-header {
+    background-color: white;
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.status-indicators {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.status-badge {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: var(--gray-medium);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    min-width: 160px;
+}
+
+.status-badge::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.status-badge i {
+    margin-right: 0.6rem;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+#connectionStatus {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+#connectionStatus i {
+    color: #d32f2f;
+}
+
+#connectionStatus.connected {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+#connectionStatus.connected i {
+    color: #2e7d32;
+}
+
+#connectionStatus.connected::before {
+    background-color: #2e7d32;
+    width: 4px;
+}
+
+#speakingStatus {
+    background-color: #f5f5f5;
+    color: var(--text-secondary);
+    position: relative;
+}
+
+#speakingStatus.speaking {
+    background-color: #e3f2fd;
+    color: #1565c0;
+}
+
+#speakingStatus.speaking i {
+    color: #1565c0;
+    animation: pulse 1.5s infinite;
+}
+
+#speakingStatus.speaking::before {
+    background-color: #1565c0;
+    width: 4px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.actions {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.action-button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color var(--transition-speed);
+}
+
+.action-button i {
+    margin-right: 0.6rem;
+    font-size: 1.1rem;
+}
+
+.action-button.start {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.action-button.start:hover {
+    background-color: var(--secondary-dark);
+}
+
+.action-button.end {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.action-button.end:hover {
+    background-color: var(--danger-dark);
+}
+
+.action-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Role Play Content */
+.role-play-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+    flex: 1;
+}
+
+.scenario-container, .conversation-container {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+}
+
+.scenario-container h3 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--gray-dark);
+    color: var(--primary-color);
+    font-size: 1.4rem;
+}
+
+.scenario-content h4 {
+    margin-bottom: 0.7rem;
+    font-size: 1.25rem;
+}
+
+.scenario-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.goal-box {
+    background-color: var(--gray-light);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-color);
+    margin-top: auto;
+}
+
+.goal-box h4 {
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.7rem;
+    font-size: 1.2rem;
+}
+
+.goal-box i {
+    margin-right: 0.5rem;
+}
+
+.goal-box p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.active-persona {
+    display: flex;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--gray-dark);
+}
+
+.persona-details {
+    flex: 1;
+    padding-left: 1rem;
+}
+
+.persona-details h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.4rem;
+    font-size: 1.6rem;
+}
+
+.persona-details h4 {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.persona-details p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.interaction-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    padding: 1.5rem;
+    position: relative;
+}
+
+.visualizer-container {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    background-color: rgba(0,0,0,0.02);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.audio-visualizer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 80px;
+    width: 200px;
+    gap: 4px;
+}
+
+.audio-visualizer .bar {
+    width: 6px;
+    background-color: var(--gray-dark);
+    border-radius: 3px;
+    height: 5px;
+    transition: height 0.2s ease, background-color 0.3s ease;
+}
+
+/* Create more bars for a fuller visualizer */
+.audio-visualizer::before,
+.audio-visualizer::after {
+    content: '';
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+/* Active speaking animation */
+.audio-visualizer.active .bar {
+    background-color: var(--primary-color);
+}
+
+/* Create animation for each bar */
+.audio-visualizer.active .bar:nth-child(1) { animation: sound-wave calc(1.2s * var(--animation-speed-factor)) infinite ease-in-out 0.0s alternate; }
+.audio-visualizer.active .bar:nth-child(2) { animation: sound-wave calc(1.0s * var(--animation-speed-factor)) infinite ease-in-out calc(0.1s * var(--animation-speed-factor)) alternate; }
+.audio-visualizer.active .bar:nth-child(3) { animation: sound-wave calc(1.4s * var(--animation-speed-factor)) infinite ease-in-out calc(0.2s * var(--animation-speed-factor)) alternate; }
+.audio-visualizer.active .bar:nth-child(4) { animation: sound-wave calc(0.8s * var(--animation-speed-factor)) infinite ease-in-out calc(0.3s * var(--animation-speed-factor)) alternate; }
+.audio-visualizer.active .bar:nth-child(5) { animation: sound-wave calc(1.6s * var(--animation-speed-factor)) infinite ease-in-out calc(0.4s * var(--animation-speed-factor)) alternate; }
+.audio-visualizer.active .bar:nth-child(6) { animation: sound-wave calc(1.0s * var(--animation-speed-factor)) infinite ease-in-out calc(0.5s * var(--animation-speed-factor)) alternate; }
+.audio-visualizer.active .bar:nth-child(7) { animation: sound-wave calc(1.2s * var(--animation-speed-factor)) infinite ease-in-out calc(0.6s * var(--animation-speed-factor)) alternate; }
+.audio-visualizer.active .bar:nth-child(8) { animation: sound-wave calc(0.9s * var(--animation-speed-factor)) infinite ease-in-out calc(0.7s * var(--animation-speed-factor)) alternate; }
+.audio-visualizer.active .bar:nth-child(9) { animation: sound-wave calc(1.5s * var(--animation-speed-factor)) infinite ease-in-out calc(0.8s * var(--animation-speed-factor)) alternate; }
+.audio-visualizer.active .bar:nth-child(10) { animation: sound-wave calc(1.3s * var(--animation-speed-factor)) infinite ease-in-out calc(0.7s * var(--animation-speed-factor)) alternate; }
+.audio-visualizer.active .bar:nth-child(11) { animation: sound-wave calc(0.7s * var(--animation-speed-factor)) infinite ease-in-out calc(0.9s * var(--animation-speed-factor)) alternate; }
+.audio-visualizer.active .bar:nth-child(12) { animation: sound-wave calc(1.1s * var(--animation-speed-factor)) infinite ease-in-out calc(0.5s * var(--animation-speed-factor)) alternate; }
+.audio-visualizer.active .bar:nth-child(13) { animation: sound-wave calc(1.4s * var(--animation-speed-factor)) infinite ease-in-out calc(0.3s * var(--animation-speed-factor)) alternate; }
+
+@keyframes sound-wave {
+    0% {
+        height: 5px;
+    }
+    100% {
+        height: 60px;
+    }
+}
+
+#interactionPrompt {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+#interactionPrompt.speaking {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    box-shadow: 0 2px 8px rgba(21, 101, 192, 0.1);
+}
+
+.app-footer {
+    background-color: white;
+    padding: 1rem 2rem;
+    border-top: 1px solid var(--gray-dark);
+}
+
+.feedback-preview {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.feedback-preview i {
+    color: var(--primary-color);
+} 

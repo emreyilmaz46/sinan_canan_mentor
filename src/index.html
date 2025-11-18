@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enocta Personas by Enocta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- The bundle.js script will be injected by HtmlWebpackPlugin -->
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <img src="https://ik.imagekit.io/emreyz/Enocta_Yeni_Logo.png?updatedAt=1748956800455" alt="Enocta Logo" class="company-logo">
+                <h2>E.PERSONAS</h2>
+            </div>
+            <div class="persona-selection">
+                <h3>OUR DEMO PERSONAS</h3>
+                <ul class="persona-list">
+                    <!-- Personas will be loaded dynamically -->
+                    <li class="persona-loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <span>Loading profiles...</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="session-info">
+                <p><i class="fas fa-clock"></i> Session Duration: <span id="sessionTime">00:00</span></p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="app-header">
+                <div class="status-indicators">
+                    <div id="connectionStatus" class="status-badge">
+                        <i class="fas fa-plug"></i> Connection Lost
+                    </div>
+                    <div id="speakingStatus" class="status-badge">
+                        <i class="fas fa-microphone-alt"></i> AI Silent
+                    </div>
+                </div>
+                <div class="actions">
+                    <button id="startButton" class="action-button start">
+                        <i class="fas fa-play"></i> Start Simulation
+                    </button>
+                    <button id="endButton" class="action-button end" disabled>
+                        <i class="fas fa-stop"></i> End Simulation
+                    </button>
+                </div>
+            </header>
+            
+            <div class="role-play-container">
+                <div class="scenario-container">
+                    <h3><i class="fas fa-clipboard-list"></i> Scenario</h3>
+                    <div class="scenario-content">
+                        <h4>Please select a customer profile</h4>
+                        <p>When you select a customer profile from the left menu, the relevant scenario and goal information will be displayed here.</p>
+                        <div class="goal-box">
+                            <h4><i class="fas fa-bullseye"></i> Goal</h4>
+                            <p>Goal information will be displayed here after a customer profile is selected.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="conversation-container">
+                    <div class="active-persona">
+                        <div class="persona-avatar large">
+                            <i class="fas fa-user-circle fa-5x"></i>
+                        </div>
+                        <div class="persona-details">
+                            <h3>No Customer Profile Selected</h3>
+                            <h4>Please select a customer profile from the left menu</h4>
+                            <p>You can start the role-playing simulation by selecting a customer profile from the left menu.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="interaction-status">
+                        <div class="visualizer-container">
+                            <div class="audio-visualizer">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                        <p id="interactionPrompt">First select a customer profile from the left menu, then click the "Start Simulation" button.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <footer class="app-footer">
+                <div class="feedback-preview">
+                    <i class="fas fa-chart-line"></i> Performance analysis can be viewed when the simulation is completed.
+                </div>
+                
+                <!-- Assessment Container -->
+                <div class="assessment-container">
+                    <!-- Assessment content will be dynamically added here -->
+                </div>
+            </footer>
+        </main>
+    </div>
+    <!-- Script is now injected by webpack -->
+</body>
+</html> 

@@ -1,0 +1,28 @@
+/* variables.css - Shared CSS variables */
+:root {
+    --primary-color: #c91f46;
+    --primary-light: #e42752;
+    --primary-dark: #a6193a;
+    --secondary-color: #4caf50;
+    --secondary-dark: #388e3c;
+    --danger-color: #f44336;
+    --danger-dark: #d32f2f;
+    --selected-persona: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #6c757d;
+    --text-light: #ffffff;
+    --gray-light: #f8f9fa;
+    --gray-medium: #e9ecef;
+    --gray-dark: #dee2e6;
+    --status-speaking: #33b5e5;
+    --status-connected: #00C851;
+    --status-disconnected: #ff4444;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 20px rgba(0,0,0,0.1);
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    
+    /* Animation speed control - smaller values = faster animations */
+    --animation-speed-factor: 0.7;
+} 

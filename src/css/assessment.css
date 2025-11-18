@@ -1,0 +1,277 @@
+/* assessment.css - Styles for simulation assessment UI */
+
+.assessment-container {
+    margin-top: 2rem;
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    display: none; /* Initially hidden until assessment data is available */
+}
+
+.assessment-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.loading-spinner {
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.assessment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gray-dark);
+}
+
+.assessment-header h3 {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+}
+
+.assessment-header h3 i {
+    margin-right: 0.8rem;
+}
+
+.assessment-meta {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.assessment-meta span {
+    display: flex;
+    align-items: center;
+}
+
+.assessment-meta i {
+    margin-right: 0.5rem;
+}
+
+.assessment-summary, 
+.assessment-audio, 
+.assessment-results, 
+.assessment-transcript {
+    margin-bottom: 2rem;
+}
+
+.assessment-summary h4, 
+.assessment-audio h4, 
+.assessment-results h4, 
+.assessment-transcript h4 {
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.assessment-summary p {
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+.assessment-audio audio {
+    width: 100%;
+    border-radius: var(--border-radius);
+    background-color: var(--gray-light);
+}
+
+.criteria-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.criterion {
+    background-color: var(--gray-light);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    border-left: 5px solid var(--gray-dark);
+}
+
+.criterion.success {
+    border-left-color: var(--secondary-color);
+}
+
+.criterion.failure {
+    border-left-color: var(--danger-color);
+}
+
+.criterion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.criterion-header h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.criterion-result {
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.criterion-result i {
+    margin-right: 0.4rem;
+}
+
+.criterion.success .criterion-result {
+    color: var(--secondary-color);
+}
+
+.criterion.failure .criterion-result {
+    color: var(--danger-color);
+}
+
+.criterion p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+.transcript-container {
+    max-height: 500px;
+    overflow-y: auto;
+    border: 1px solid var(--gray-medium);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+}
+
+.transcript-message {
+    display: flex;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--gray-medium);
+}
+
+.transcript-message:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    background-color: var(--gray-medium);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    color: var(--text-secondary);
+    overflow: hidden;
+}
+
+.message-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-message .message-avatar {
+    background-color: var(--primary-light);
+    color: white;
+}
+
+.agent-message .message-avatar {
+    background-color: var(--secondary-color);
+    color: white;
+    border: 2px solid var(--secondary-color);
+}
+
+.message-content {
+    flex: 1;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.message-role {
+    font-weight: 600;
+}
+
+.user-message .message-role {
+    color: var(--primary-color);
+}
+
+.agent-message .message-role {
+    color: var(--secondary-color);
+}
+
+.message-time {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.message-content p {
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .criteria-results {
+        grid-template-columns: 1fr;
+    }
+}
+
+.component-loading {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-radius: var(--border-radius);
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.component-loading i {
+    margin-right: 0.8rem;
+    color: var(--primary-color);
+}
+
+.component-error {
+    background-color: rgba(244, 67, 54, 0.05);
+    color: #d32f2f;
+}
+
+.component-error i {
+    color: #d32f2f;
+    margin-right: 0.5rem;
+}
+
+/* Error message styling */
+.error-message {
+    color: #d32f2f;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: #ffebee;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.error-message i {
+    font-size: 1.2rem;
+} 
